@@ -32,13 +32,32 @@ class RecipeImage extends StatelessWidget {
   }
 
   Widget _buildImageContent() {
-    return Container(
-      color: AppTheme.primaryColor.withOpacity(0.1),
-      child: Icon(
-        Icons.restaurant,
-        size: (height != null && height!.isFinite) ? height! * 0.4 : 40,
-        color: AppTheme.primaryColor.withOpacity(0.6),
-      ),
-    );
+    if (imageUrl.isNotEmpty) {
+      return Image.network(
+        imageUrl,
+        width: width,
+        height: height,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) {
+          return Container(
+            color: AppTheme.primaryColor.withOpacity(0.1),
+            child: Icon(
+              Icons.restaurant,
+              size: (height != null && height!.isFinite) ? height! * 0.4 : 40,
+              color: AppTheme.primaryColor.withOpacity(0.6),
+            ),
+          );
+        },
+      );
+    } else {
+      return Container(
+        color: AppTheme.primaryColor.withOpacity(0.1),
+        child: Icon(
+          Icons.restaurant,
+          size: (height != null && height!.isFinite) ? height! * 0.4 : 40,
+          color: AppTheme.primaryColor.withOpacity(0.6),
+        ),
+      );
+    }
   }
 }

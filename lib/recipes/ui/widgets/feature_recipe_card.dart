@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:nutrichef/common/ui/overlyays/gradient_overlay.dart';
 import 'package:nutrichef/core/config/domain/constants/app_constants.dart';
 import 'package:nutrichef/core/config/ui/app_theme.dart';
-import 'package:nutrichef/recipes/domain/adapters/recipe_adapter.dart';
+import 'package:nutrichef/recipes/domain/adapters/preview_receipe_adapter.dart';
 import 'package:nutrichef/recipes/ui/widgets/recipe_image.dart';
 
 class FeaturedRecipeCard extends StatelessWidget {
-  final RecipeAdapter recipe;
+  final PreviewRecipeAdapter recipe;
 
   const FeaturedRecipeCard({
     super.key,
@@ -18,7 +18,7 @@ class FeaturedRecipeCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => _navigateToDetail(context),
       child: Container(
-        height: 200,
+        height: 220,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
@@ -36,9 +36,9 @@ class FeaturedRecipeCard extends StatelessWidget {
             children: [
               // Background image
               RecipeImage(
-                imageUrl: recipe.imageUrl,
+                imageUrl: recipe.image,
                 width: 300,
-                height: 200,
+                height: 220,
               ),
 
               // Gradient overlay
@@ -46,18 +46,27 @@ class FeaturedRecipeCard extends StatelessWidget {
 
               // Recipe information
               Positioned(
-                bottom: 16,
-                left: 16,
-                right: 16,
-                child: Text(
-                  recipe.name,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+                  bottom: 16,
+                  left: 16,
+                  right: 16,
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: AppTheme.primaryColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      recipe.title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  )),
 
               // Time badge
               Positioned(
@@ -71,7 +80,7 @@ class FeaturedRecipeCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    '${recipe.cookingTime} ${AppConstants.minutes}',
+                    '${recipe.readyInMinutes} ${AppConstants.minutes}',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 12,

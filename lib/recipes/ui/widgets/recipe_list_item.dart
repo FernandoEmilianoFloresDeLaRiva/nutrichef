@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nutrichef/core/config/domain/constants/app_constants.dart';
 import 'package:nutrichef/core/config/ui/app_theme.dart';
-import 'package:nutrichef/recipes/domain/adapters/recipe_adapter.dart';
+import 'package:nutrichef/recipes/domain/adapters/preview_receipe_adapter.dart';
 import 'package:nutrichef/recipes/ui/widgets/recipe_image.dart';
 import 'package:nutrichef/recipes/ui/widgets/recipe_tags.dart';
 
 class RecipeListItem extends StatelessWidget {
-  final RecipeAdapter recipe;
+  final PreviewRecipeAdapter recipe;
 
   const RecipeListItem({
     super.key,
@@ -34,9 +34,8 @@ class RecipeListItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-
-             RecipeImage(
-              imageUrl: recipe.imageUrl,
+            RecipeImage(
+              imageUrl: recipe.image,
               width: 80,
               height: 80,
               borderRadius: 8,
@@ -50,7 +49,7 @@ class RecipeListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    recipe.name,
+                    recipe.title,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -70,7 +69,7 @@ class RecipeListItem extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        '${recipe.cookingTime} ${AppConstants.minutes}',
+                        '${recipe.readyInMinutes} ${AppConstants.minutes}',
                         style: const TextStyle(
                           color: AppTheme.textSecondary,
                           fontSize: 14,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:nutrichef/recipes/domain/adapters/recipe_adapter.dart';
+import 'package:nutrichef/recipes/domain/adapters/preview_receipe_adapter.dart';
 import 'package:nutrichef/recipes/ui/widgets/empty_list.dart';
 import 'package:nutrichef/recipes/ui/widgets/recipe_list_item.dart';
 
 class RecipeList extends StatelessWidget {
-  final List<RecipeAdapter> recipes;
+  final List<PreviewRecipeAdapter> recipes;
 
   const RecipeList({
     super.key,
