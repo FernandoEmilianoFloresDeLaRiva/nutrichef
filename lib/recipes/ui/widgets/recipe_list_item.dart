@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nutrichef/core/config/domain/constants/app_constants.dart';
 import 'package:nutrichef/core/config/ui/app_theme.dart';
+import 'package:nutrichef/core/router/domain/constants/router_constants.dart';
 import 'package:nutrichef/recipes/domain/adapters/preview_receipe_adapter.dart';
 import 'package:nutrichef/recipes/ui/widgets/recipe_image.dart';
 import 'package:nutrichef/recipes/ui/widgets/recipe_tags.dart';
@@ -91,5 +93,9 @@ class RecipeListItem extends StatelessWidget {
     );
   }
 
-  void _navigateToDetail(BuildContext context) {}
+  void _navigateToDetail(
+    BuildContext context,
+  ) {
+    context.go("${RouterConstants.recipe}/${recipe.id}");
+  }
 }

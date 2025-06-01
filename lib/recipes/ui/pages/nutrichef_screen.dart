@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nutrichef/common/ui/widgets/custom_app_bar.dart';
 import 'package:nutrichef/common/ui/widgets/section_title.dart';
 import 'package:nutrichef/core/config/domain/constants/app_constants.dart';
 import 'package:nutrichef/recipes/ui/notifiers/nutrichef_notifier.dart';
 import 'package:nutrichef/recipes/ui/widgets/category_selector.dart';
 import 'package:nutrichef/recipes/ui/widgets/feature_recipe_card.dart';
 import 'package:nutrichef/recipes/ui/widgets/recipe_list.dart';
+import 'package:nutrichef/recipes/ui/widgets/recipes_app_bar.dart';
 import 'package:provider/provider.dart';
 
 class NutriChefScreen extends StatelessWidget {
@@ -28,7 +28,7 @@ class NutriChefBody extends StatelessWidget {
     final notifier = Provider.of<NutriChefNotifier>(context, listen: false);
 
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: const RecipesAppBar(),
       body: FutureBuilder(
         future: notifier.fetchAll(),
         builder: (context, snapshot) {
