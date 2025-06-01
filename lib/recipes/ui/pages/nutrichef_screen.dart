@@ -35,7 +35,7 @@ class NutriChefBody extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Ocurrió un error: ${snapshot.error}'));
+            return Center(child: Text('Ocurrió un error: \\${snapshot.error}'));
           } else {
             return Consumer<NutriChefNotifier>(
                 builder: (context, notifier, _) => SingleChildScrollView(

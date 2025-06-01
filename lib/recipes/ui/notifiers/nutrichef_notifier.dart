@@ -11,6 +11,10 @@ class NutriChefNotifier extends ChangeNotifier {
   List<PreviewRecipeAdapter> get randomRecipes => _randomRecipes;
   String _selectedCategory = AppConstants.categories.first;
   String get selectedCategory => _selectedCategory;
+  bool _isSearching = false;
+  bool get isSearching => _isSearching;
+  String _searchText = '';
+  String get searchText => _searchText;
 
   Future<void> getRecipes(String type) async {
     final recipes = await GetRecipes.get(type);
@@ -24,6 +28,28 @@ class NutriChefNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setSelectedCategory(String category) {
+    _selectedCategory = category;
+    getRecipes(category);
+    notifyListeners();
+  }
+
+  void startSearch() {
+    _isSearching = true;
+    notifyListeners();
+  }
+
+  void stopSearch() {
+    _isSearching = false;
+    _searchText = '';
+    notifyListeners();
+  }
+
+  void updateSearchText(String text) {
+    _searchText = text;
+    notifyListeners();
+  }
+
   Future<void> fetchAll() async {
     await Future.wait([
       getRandomRecipes(),
@@ -31,9 +57,12 @@ class NutriChefNotifier extends ChangeNotifier {
     ]);
   }
 
-  void setSelectedCategory(String category) {
-    _selectedCategory = category;
-    getRecipes(category);
+  Future<void> searchRecipes() async {
+    if (_searchText.trim().isEmpty) {
+      return;
+    }
+    final recipes = await GetRecipes.get(_selectedCategory, query: _searchText);
+    _recipes = recipes;
     notifyListeners();
   }
 }
