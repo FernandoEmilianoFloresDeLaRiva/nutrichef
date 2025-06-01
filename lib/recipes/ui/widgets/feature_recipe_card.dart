@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrichef/common/ui/overlyays/gradient_overlay.dart';
-import 'package:nutrichef/core/config/domain/constants/app_constants.dart';
+import 'package:nutrichef/common/ui/widgets/cooking_time_chip.dart';
 import 'package:nutrichef/core/config/ui/app_theme.dart';
 import 'package:nutrichef/core/router/domain/constants/router_constants.dart';
 import 'package:nutrichef/recipes/domain/adapters/preview_receipe_adapter.dart';
@@ -74,22 +74,7 @@ class FeaturedRecipeCard extends StatelessWidget {
               Positioned(
                 top: 12,
                 right: 12,
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: AppTheme.accentColor,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    '${recipe.readyInMinutes} ${AppConstants.minutes}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                child: CookingTimeChip(cookingTime: recipe.readyInMinutes),
               ),
             ],
           ),

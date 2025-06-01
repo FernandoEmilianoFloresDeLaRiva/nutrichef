@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:nutrichef/common/ui/widgets/recipe_tag.dart';
 
-class RecipeTags extends StatelessWidget {
+class RecipeTagsWidget extends StatelessWidget {
   final List<String> tags;
-  final int? maxTags;
 
-  const RecipeTags({
+  const RecipeTagsWidget({
     super.key,
     required this.tags,
-    this.maxTags,
   });
 
   @override
   Widget build(BuildContext context) {
-    final displayTags = maxTags != null ? tags.take(maxTags!).toList() : tags;
-
     return Wrap(
       spacing: 8,
       runSpacing: 4,
-      children: displayTags.map((tag) {
-        return RecipeTag(label: tag);
-      }).toList(),
+      children: tags.map((tag) => RecipeTag(label: tag)).toList(),
     );
   }
 }
