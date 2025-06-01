@@ -1,12 +1,15 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class GetWithoutAuth {
-  static Future get(String subUrl, {Map<String, String>? params}) async {
+  final apiUrl = dotenv.env['API_URL'] ?? "";
+  final apiKey = dotenv.env['API_KEY'] ?? "";
+  Future get(String subUrl, {Map<String, String>? params}) async {
     try {
-      final url = Uri.https("api.spoonacular.com", "recipes/$subUrl", {
-        "apiKey": "87237ee4998c472c92bf215cd5705a17",
+      final url = Uri.https(apiUrl, "recipes/$subUrl", {
+        "apiKey": apiKey,
         ...?params,
       });
       print(url);

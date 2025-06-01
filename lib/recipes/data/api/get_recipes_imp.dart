@@ -9,7 +9,7 @@ class GetRecipesImp implements GetRecipesRepository {
   @override
   Future<List<PreviewRecipeAdapter>> getRandomRecipes(String limit) async {
     try {
-      final response = await GetWithoutAuth.get("random", params: {
+      final response = await getWithoutAuth.get("random", params: {
         "number": limit,
       });
       final List<dynamic> results = response['recipes'];
@@ -32,7 +32,7 @@ class GetRecipesImp implements GetRecipesRepository {
         params["query"] = query;
       }
       final response =
-          await GetWithoutAuth.get("complexSearch", params: params);
+          await getWithoutAuth.get("complexSearch", params: params);
       final List<dynamic> results = response['results'];
       final recipes =
           results.map((e) => PreviewRecipeAdapter.fromJson(e)).toList();
