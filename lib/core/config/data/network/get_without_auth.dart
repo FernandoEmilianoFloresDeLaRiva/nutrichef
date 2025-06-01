@@ -12,7 +12,6 @@ class GetWithoutAuth {
         "apiKey": apiKey,
         ...?params,
       });
-      print(url);
       final response = await http.get(url);
       if (response.statusCode == 200) {
         return jsonDecode(response.body);

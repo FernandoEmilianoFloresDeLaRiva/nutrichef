@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nutrichef/core/config/ui/app_theme.dart';
-import 'package:nutrichef/recipes/domain/adapters/recipe_adapter.dart';
+import 'package:nutrichef/recipes_detail/domain/adapters/recipe_detail_adapter.dart';
 import 'package:nutrichef/recipes_detail/ui/widgets/recipe_tags.dart';
 
 class RecipeHeader extends StatelessWidget {
-  final RecipeAdapter recipe;
+  final RecipeDetailAdapter recipe;
   const RecipeHeader({super.key, required this.recipe});
 
   @override
@@ -17,7 +17,7 @@ class RecipeHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            recipe.name,
+            recipe.title,
             style: const TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,

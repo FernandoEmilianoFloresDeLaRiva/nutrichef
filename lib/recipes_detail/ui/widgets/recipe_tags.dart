@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nutrichef/common/domain/adapters/tags_adapter.dart';
 import 'package:nutrichef/common/ui/widgets/recipe_tag.dart';
 
 class RecipeTagsWidget extends StatelessWidget {
-  final List<String> tags;
+  final TagsAdapter tags;
 
   const RecipeTagsWidget({
     super.key,
@@ -14,7 +15,7 @@ class RecipeTagsWidget extends StatelessWidget {
     return Wrap(
       spacing: 8,
       runSpacing: 4,
-      children: tags.map((tag) => RecipeTag(label: tag)).toList(),
+      children: tags.tags.map((tag) => RecipeTag(label: tag)).toList(),
     );
   }
 }

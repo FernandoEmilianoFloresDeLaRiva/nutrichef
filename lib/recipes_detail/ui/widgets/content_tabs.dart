@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nutrichef/core/config/ui/app_theme.dart';
-import 'package:nutrichef/recipes/domain/adapters/recipe_adapter.dart';
+import 'package:nutrichef/recipes_detail/domain/adapters/recipe_detail_adapter.dart';
 import 'package:nutrichef/recipes_detail/ui/widgets/ingredients_tab.dart';
 import 'package:nutrichef/recipes_detail/ui/widgets/instructions_tab.dart';
 
 class ContentTabs extends StatelessWidget {
-  final RecipeAdapter recipe;
+  final RecipeDetailAdapter recipe;
   const ContentTabs({super.key, required this.recipe});
 
   @override
